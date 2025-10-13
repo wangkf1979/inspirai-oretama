@@ -29,6 +29,16 @@
             outline: none;
             box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.5);
         }
+        /* Styles for scroll-triggered animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -42,6 +52,7 @@
                 <a href="#how-it-works" class="text-gray-600 hover:text-purple-700 transition-colors rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 px-2 py-1">How It Works</a>
                 <a href="#testimonials" class="text-gray-600 hover:text-purple-700 transition-colors rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 px-2 py-1">Testimonials</a>
                 <a href="#about" class="text-gray-600 hover:text-purple-700 transition-colors rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 px-2 py-1">About Us</a>
+                <a href="#waitlist" class="border border-purple-600 text-purple-600 px-6 py-2 rounded-md hover:bg-purple-600 hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2">Apply Now</a>
             </nav>
             <button id="mobile-menu-button" class="md:hidden p-2 rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500" aria-label="Open menu">
                 <i data-lucide="menu" class="w-6 h-6"></i>
@@ -53,6 +64,7 @@
             <a href="#how-it-works" class="block py-2 text-gray-600 hover:text-purple-700 rounded-md">How It Works</a>
             <a href="#testimonials" class="block py-2 text-gray-600 hover:text-purple-700 rounded-md">Testimonials</a>
             <a href="#about" class="block py-2 text-gray-600 hover:text-purple-700 rounded-md">About Us</a>
+            <a href="#waitlist" class="block mt-2 text-center bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 transition-colors">Apply Now</a>
         </div>
     </header>
 
@@ -66,21 +78,42 @@
                     <span class="block text-purple-700">Unleash AI Learning.</span>
                 </h1>
                 <p class="mt-6 max-w-2xl mx-auto text-lg text-gray-600 leading-relaxed">
-                    ORETAMA is your personal AI tutor, creating a dynamic learning journey that adapts to your curiosity, pace, and goals. Education, reimagined.
+                    Unlock your potential with ORETAMA, your personal AI tutor powered by Telegram. It creates a dynamic learning journey that adapts to your curiosity, pace, and goals — truly reimagining education.
                 </p>
             </div>
         </section>
 
+        <!-- Waitlist Section -->
+        <section id="waitlist" class="py-20 bg-white" role="region" aria-labelledby="waitlist-heading">
+            <div class="container mx-auto px-6 text-center max-w-3xl">
+                <h2 id="waitlist-heading" class="text-3xl md:text-4xl font-bold text-gray-900">Preview the Next Evolution</h2>
+                <p class="mt-4 text-lg text-gray-600 leading-relaxed">
+                    The next chapter of AI learning is coming. Sign up for an exclusive invitation to our next major update and receive <span class="font-bold text-purple-700">3 months of free premium access</span>.
+                </p>
+                <div id="waitlist-form-container" class="mt-8 max-w-md mx-auto">
+                    <form id="waitlist-form" class="flex flex-col sm:flex-row gap-4">
+                        <input type="email" id="waitlist-email" placeholder="Enter your email address" required class="flex-grow w-full px-4 py-3 rounded-md border-gray-300 focus:ring-purple-500 focus:border-purple-500 transition">
+                        <button type="submit" class="bg-purple-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-purple-700 transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2">Apply</button>
+                    </form>
+                    <p class="mt-4 text-sm text-gray-500">We respect your privacy. No spam.</p>
+                </div>
+                <div id="waitlist-success" class="hidden mt-8 max-w-md mx-auto bg-green-100 text-green-800 p-6 rounded-lg">
+                    <h3 class="font-bold text-xl">You're on the list!</h3>
+                    <p class="mt-2">Thanks for your interest! We'll send you an email with your exclusive invitation as soon as the next version is ready for preview.</p>
+                </div>
+            </div>
+        </section>
+
         <!-- Features Section -->
-        <section id="features" class="py-20 bg-white" role="region" aria-labelledby="features-heading">
+        <section id="features" class="py-20" role="region" aria-labelledby="features-heading">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
+                <div class="text-center mb-12 animate-on-scroll">
                     <h2 id="features-heading" class="text-sm font-bold uppercase text-purple-600 tracking-widest">Core Features</h2>
                     <p class="text-3xl md:text-4xl font-bold text-gray-900 mt-2">Why ORETAMA is Different</p>
                 </div>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="max-w-4xl mx-auto grid sm:grid-cols-2 gap-8">
                     <!-- Feature 1 -->
-                    <div class="bg-gray-50 p-8 rounded-xl shadow-sm hover:shadow-lg transition-shadow">
+                    <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-lg transition-shadow animate-on-scroll" style="transition-delay: 100ms;">
                         <div class="bg-purple-100 text-purple-700 w-12 h-12 rounded-full flex items-center justify-center">
                             <i data-lucide="sparkles" class="w-6 h-6"></i>
                         </div>
@@ -88,7 +121,7 @@
                         <p class="mt-2 text-gray-600">Our adaptive AI engine crafts unique learning paths based on your strengths, weaknesses, and interests.</p>
                     </div>
                     <!-- Feature 2 -->
-                    <div class="bg-gray-50 p-8 rounded-xl shadow-sm hover:shadow-lg transition-shadow">
+                    <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-lg transition-shadow animate-on-scroll" style="transition-delay: 200ms;">
                         <div class="bg-purple-100 text-purple-700 w-12 h-12 rounded-full flex items-center justify-center">
                             <i data-lucide="bot" class="w-6 h-6"></i>
                         </div>
@@ -96,21 +129,29 @@
                         <p class="mt-2 text-gray-600">Get instant help and explanations from friendly AI tutors available 24/7. Ask anything, anytime.</p>
                     </div>
                     <!-- Feature 3 -->
-                    <div class="bg-gray-50 p-8 rounded-xl shadow-sm hover:shadow-lg transition-shadow">
+                    <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-lg transition-shadow animate-on-scroll" style="transition-delay: 300ms;">
                          <div class="bg-purple-100 text-purple-700 w-12 h-12 rounded-full flex items-center justify-center">
                             <i data-lucide="gamepad-2" class="w-6 h-6"></i>
                         </div>
                         <h3 class="mt-6 text-xl font-bold">Gamified Challenges</h3>
                         <p class="mt-2 text-gray-600">Stay motivated with points, badges, and leaderboards. Learning has never been this engaging and fun!</p>
                     </div>
+                     <!-- Feature 4 -->
+                    <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-lg transition-shadow animate-on-scroll" style="transition-delay: 400ms;">
+                         <div class="bg-purple-100 text-purple-700 w-12 h-12 rounded-full flex items-center justify-center">
+                            <i data-lucide="shield-half" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="mt-6 text-xl font-bold">Anonymous Social Learning</h3>
+                        <p class="mt-2 text-gray-600">Learn and interact securely within our Telegram Mini App. Your privacy is paramount, enabling you to focus purely on learning.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- How It Works Section -->
-        <section id="how-it-works" class="py-20" role="region" aria-labelledby="how-it-works-heading">
+        <section id="how-it-works" class="py-20 bg-white" role="region" aria-labelledby="how-it-works-heading">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
+                <div class="text-center mb-12 animate-on-scroll">
                     <h2 id="how-it-works-heading" class="text-sm font-bold uppercase text-purple-600 tracking-widest">Get Started</h2>
                     <p class="text-3xl md:text-4xl font-bold text-gray-900 mt-2">Learning in 3 Easy Steps</p>
                 </div>
@@ -119,22 +160,22 @@
                     <div class="hidden md:block absolute top-1/2 left-0 w-full border-t-2 border-dashed border-gray-300"></div>
                     <div class="relative grid md:grid-cols-3 gap-12">
                         <!-- Step 1 -->
-                        <div class="text-center">
+                        <div class="text-center animate-on-scroll" style="transition-delay: 100ms;">
                             <div class="bg-white border-2 border-purple-200 w-24 h-24 rounded-full flex items-center justify-center mx-auto text-3xl font-bold text-purple-700 shadow-lg">1</div>
-                            <h3 class="mt-6 text-xl font-bold">Create Your Account</h3>
-                            <p class="mt-2 text-gray-600">Quickly set up your learning profile to get started in seconds.</p>
+                            <h3 class="mt-6 text-xl font-bold">Apply for an Invite</h3>
+                            <p class="mt-2 text-gray-600">Get on the list for our next major update to be the first to try new features.</p>
                         </div>
                         <!-- Step 2 -->
-                        <div class="text-center">
+                        <div class="text-center animate-on-scroll" style="transition-delay: 200ms;">
                             <div class="bg-white border-2 border-purple-200 w-24 h-24 rounded-full flex items-center justify-center mx-auto text-3xl font-bold text-purple-700 shadow-lg">2</div>
                             <h3 class="mt-6 text-xl font-bold">Set Your Goals</h3>
                             <p class="mt-2 text-gray-600">Tell us what you want to learn, and our AI will build your personalized curriculum.</p>
                         </div>
                         <!-- Step 3 -->
-                        <div class="text-center">
+                        <div class="text-center animate-on-scroll" style="transition-delay: 300ms;">
                             <div class="bg-white border-2 border-purple-200 w-24 h-24 rounded-full flex items-center justify-center mx-auto text-3xl font-bold text-purple-700 shadow-lg">3</div>
                             <h3 class="mt-6 text-xl font-bold">Start Your Journey</h3>
-                            <p class="mt-2 text-gray-600">Dive into interactive lessons, solve challenges, and watch your knowledge grow.</p>
+                            <p class="mt-2 text-gray-600">Dive into new, cutting-edge features and experience the future of personalized education.</p>
                         </div>
                     </div>
                 </div>
@@ -144,7 +185,7 @@
         <!-- Testimonials Section -->
         <section id="testimonials" class="py-20" role="region" aria-labelledby="testimonials-heading">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
+                <div class="text-center mb-12 animate-on-scroll">
                     <h2 id="testimonials-heading" class="text-sm font-bold uppercase text-purple-600 tracking-widest">Testimonials</h2>
                     <p class="text-3xl md:text-4xl font-bold text-gray-900 mt-2">Loved by Learners Worldwide</p>
                 </div>
@@ -208,10 +249,13 @@
         
         <!-- About Section -->
         <section id="about" class="py-20 bg-white" role="region" aria-labelledby="about-heading">
-            <div class="container mx-auto px-6 text-center max-w-4xl">
+            <div class="container mx-auto px-6 text-center max-w-4xl animate-on-scroll">
                  <h2 id="about-heading" class="text-3xl md:text-4xl font-bold text-gray-900">Our Mission</h2>
                  <p class="mt-4 text-lg text-gray-600 leading-relaxed">
                     We believe that education should be as unique as the individual. Our mission is to harness the power of artificial intelligence to create truly personalized and inspiring learning experiences for everyone, breaking down barriers and unlocking human potential.
+                 </p>
+                 <p class="mt-6 text-md text-gray-500 leading-relaxed">
+                    Embracing a decentralized work model, our team is distributed across key innovation hubs including Beijing, Hong Kong, Singapore, Kuala Lumpur, Manila, and Ho Chi Minh City. This diversity fuels our creativity and ensures we build a product with a truly international perspective.
                  </p>
             </div>
         </section>
@@ -270,12 +314,37 @@
             window.addEventListener('resize', updateButtons);
             updateButtons();
         }
+
+        // Waitlist form handler
+        const waitlistFormContainer = document.getElementById('waitlist-form-container');
+        const waitlistForm = document.getElementById('waitlist-form');
+        const waitlistSuccess = document.getElementById('waitlist-success');
+
+        if (waitlistForm) {
+            waitlistForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                waitlistFormContainer.classList.add('hidden');
+                waitlistSuccess.classList.remove('hidden');
+            });
+        }
+
+        // Scroll Animation Logic
+        const scrollObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        });
+
+        const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
+        elementsToAnimate.forEach(el => {
+            scrollObserver.observe(el);
+        });
     </script>
 </body>
 </html>
-
-
-
-
-
 
